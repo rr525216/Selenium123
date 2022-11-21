@@ -1,4 +1,4 @@
-package stepDef;
+package testrunners;
 
 import org.testng.annotations.DataProvider;
 
@@ -11,7 +11,7 @@ import io.cucumber.testng.CucumberOptions;
 				"timeline:test-output-thread/"
 				}, 
 		monochrome = true,
-		features = {"src/test/resources/parallel"},
+		features = {"features"},
 		glue = {"stepDef"},
 		tags = "@googlepage"
 )
