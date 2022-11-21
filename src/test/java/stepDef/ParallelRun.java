@@ -1,4 +1,4 @@
-package parallel;
+package stepDef;
 
 import org.testng.annotations.DataProvider;
 
@@ -11,8 +11,9 @@ import io.cucumber.testng.CucumberOptions;
 				"timeline:test-output-thread/"
 				}, 
 		monochrome = true,
-		glue = { "parallel" },
-		features = { "src/test/resources/parallel" }
+		features = {"src/test/resources/parallel"},
+		glue = {"stepDef"},
+		tags = "@googlepage"
 )
 
 public class ParallelRun extends AbstractTestNGCucumberTests {
