@@ -7,17 +7,11 @@ public class LoginPage {
 
 	private WebDriver driver;
 
-	// 1. By Locators: OR
-
-
 	private  By bestseller =By.xpath("(//a[contains(text(),'Best Sellers')])[1]");
 
-	// 2. Constructor of the page class:
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
 	}
-
-	// 3. page actions: features(behavior) of the page the form of methods:
 
 	public String getLoginPageTitle() {
 		return driver.getTitle();

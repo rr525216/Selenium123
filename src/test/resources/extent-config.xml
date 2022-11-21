@@ -5,7 +5,7 @@
 
 		<!-- standard, dark -->
 
-		<theme>dark</theme>
+		<theme>standard</theme>
 		<!-- document encoding -->
 
 		<!-- defaults to UTF-8 -->
@@ -15,7 +15,7 @@
 
 		<!-- defaults to https -->
 
-		<protocol>http</protocol>
+		<protocol>https</protocol>
 		<!-- title of the document -->
 		<documentTitle>Extent</documentTitle>
 		<!-- report name - displayed at top-nav -->
@@ -25,7 +25,7 @@
 
 		<!-- top, bottom -->
 
-		<testViewChartLocation>bottom</testViewChartLocation>
+<!--		<testViewChartLocation>bottom</testViewChartLocation>-->
 		<!-- custom javascript -->
 
 		<scripts>

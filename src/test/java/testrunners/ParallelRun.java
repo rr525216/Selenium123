@@ -8,12 +8,12 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
 		plugin = {"pretty",
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-				"timeline:test-output-thread/"
+				//"timeline:test-output-thread/"
 				}, 
 		monochrome = true,
 		features = {"features"},
 		glue = {"stepDef"},
-		tags = "@naveen123"
+		tags = "@googlepage23"
 )
 
 public class ParallelRun extends AbstractTestNGCucumberTests {

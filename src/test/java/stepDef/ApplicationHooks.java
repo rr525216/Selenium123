@@ -36,7 +36,10 @@ public class ApplicationHooks {
 	@Before(order = 2)
 	public void beforeStart(Scenario scenario){
 		System.out.println("Scenario Name : " +scenario.getName());
-	}
+		ConfigReader.setScenarioContext("Scenario",scenario);
+
+
+ 	}
 
 	@After(order = 0)
 	public void quitBrowser() {
@@ -50,6 +53,7 @@ public class ApplicationHooks {
 			String screenshotName = scenario.getName().replaceAll(" ", "_");
 			byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 			scenario.attach(sourcePath, "image/png", screenshotName);
+
 
 		}
 	}
