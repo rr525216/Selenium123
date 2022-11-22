@@ -7,6 +7,8 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
 		plugin = {"pretty",
+				"json:target/cucumber-reports/Cucumber.json",
+				"html:target/cucumber-reports/Cucumber.html",
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				//"timeline:test-output-thread/"
 				}, 
