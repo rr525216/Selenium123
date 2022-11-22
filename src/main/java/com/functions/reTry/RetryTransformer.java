@@ -1,4 +1,4 @@
-package com.qa.reTry;
+package com.functions.reTry;
 
 import org.testng.IAnnotationTransformer;
 import org.testng.annotations.ITestAnnotation;

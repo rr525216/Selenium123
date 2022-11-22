@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Selenium Practice" parallel="methods" thread-count="6">
     <listeners>
-        <listener class-name="com.qa.reTry.RetryTransformer"></listener>
+        <listener class-name="com.functions.reTry.RetryTransformer"></listener>
     </listeners>
     <test parallel="methods" thread-count="6" name="Test">
         <classes>

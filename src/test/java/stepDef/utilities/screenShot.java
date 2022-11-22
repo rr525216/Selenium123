@@ -1,6 +1,6 @@
-package stepDef;
+package stepDef.utilities;
 
-import com.qa.util.ConfigReader;
+import com.functions.util.ConfigReader;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;

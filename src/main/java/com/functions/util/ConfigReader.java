@@ -1,4 +1,4 @@
-package com.qa.util;
+package com.functions.util;
 
 import org.openqa.selenium.WebDriver;
 
@@ -11,11 +11,13 @@ import java.util.Properties;
 
 public class ConfigReader {
 
-	private Properties prop;
+	public static Properties prop;
 
 public static Map<String,Object> scenarioContext = new HashMap<>();
 public static Map<String,Object> driver_name = new HashMap<>();
-	public Properties init_prop() {
+public static Map<String,Object> configValue = new HashMap<>();
+
+	public static Properties init_prop() {
 
 		prop = new Properties();
 		try {
@@ -30,6 +32,14 @@ public static Map<String,Object> driver_name = new HashMap<>();
 
 		return prop;
 
+	}
+
+	public static void setValue(String key,String value){
+		configValue.put(key,value);
+	}
+
+	public static String getValue(String key){
+		return init_prop().get(key).toString();
 	}
 
 	public static void setScenarioContext(String key,Object value){

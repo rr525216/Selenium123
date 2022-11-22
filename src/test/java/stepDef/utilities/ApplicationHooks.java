@@ -1,4 +1,4 @@
-package stepDef;
+package stepDef.utilities;
 
 import java.util.Properties;
 
@@ -6,8 +6,8 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-import com.qa.factory.DriverFactory;
-import com.qa.util.ConfigReader;
+import com.functions.factory.DriverFactory;
+import com.functions.util.ConfigReader;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -21,26 +21,15 @@ public class ApplicationHooks {
 	Properties prop;
 
 	@Before(order = 0)
-	public void getProperty() {
+	public void beforeStart(Scenario scenario){
 		configReader = new ConfigReader();
-		prop = configReader.init_prop();
-	}
-
-	@Before(order = 1)
-	public void launchBrowser() {
-		String browserName = prop.getProperty("browser");
+		String browserName =configReader.getValue("browser");
+		System.out.println("browser : " +browserName);
 		driverFactory = new DriverFactory();
 		driver = driverFactory.init_driver(browserName);
-
-	}
-	@Before(order = 2)
-	public void beforeStart(Scenario scenario){
 		System.out.println("Scenario Name : " +scenario.getName());
 		ConfigReader.setScenarioContext("Scenario",scenario);
-
-
  	}
-
 	@After(order = 0)
 	public void quitBrowser() {
 		driver.quit();
@@ -49,11 +38,9 @@ public class ApplicationHooks {
 	@After(order = 1)
 	public void tearDown(Scenario scenario) {
 		if (scenario.isFailed()) {
-			// take screenshot:
 			String screenshotName = scenario.getName().replaceAll(" ", "_");
 			byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 			scenario.attach(sourcePath, "image/png", screenshotName);
-
 
 		}
 	}

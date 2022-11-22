@@ -23,4 +23,11 @@ public class LoginPage {
 		driver.findElement(bestseller).click();
 	}
 
+
+	public void pageLogin(String url){
+
+		driver.get(url);
+
+	}
+
 }
