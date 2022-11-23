@@ -16,6 +16,7 @@ public class ConfigReader {
 public static Map<String,Object> scenarioContext = new HashMap<>();
 public static Map<String,Object> driver_name = new HashMap<>();
 public static Map<String,Object> configValue = new HashMap<>();
+public static Map<String,Object> config = new HashMap<>();
 
 	public static Properties init_prop() {
 
@@ -61,6 +62,16 @@ public static Map<String,Object> configValue = new HashMap<>();
 	}
 	public static WebDriver getDriver(String key){
 		return (WebDriver) driver_name.get(key);
+	}
+
+
+
+	public static void setConfigValue(String key,String value){
+		config.put(key,value);
+	}
+
+	public static String getConfigValue(String key){
+		return (String) config.get(key);
 	}
 
 }

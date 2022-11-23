@@ -43,6 +43,15 @@ public class ApplicationHooks {
 			scenario.attach(sourcePath, "image/png", screenshotName);
 
 		}
+
+		try{
+
+			testCount.counter(scenario);
+
+		}
+		catch (Exception e){
+			System.out.println("count is not working");
+		}
 	}
 
 }

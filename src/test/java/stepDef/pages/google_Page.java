@@ -30,8 +30,8 @@ public class google_Page {
     public void user_is_on_accounts_page() {
 
         ConfigReader.setDriver("driver",DriverFactory.getDriver());
-        loginPage = new LoginPage(DriverFactory.getDriver());
-        loginPage.pageLogin(configReader.getValue("Url"));
+//        loginPage = new LoginPage(DriverFactory.getDriver());
+//        loginPage.pageLogin(configReader.getValue("Url"));
         addTestStepLog("testpass");
         screenShot.takescreenshot("naveen1");
 
