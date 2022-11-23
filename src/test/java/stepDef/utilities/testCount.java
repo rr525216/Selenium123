@@ -58,11 +58,13 @@ public class testCount {
         //INSERT
         if(dateCount == null){
             addTestStepLog("My Date : " +today);
+            screenShot.fieldname("My Date : " +today);
             TestDataInMap = Reader.insertTestdataInmap(sheetname,today);
             ConfigReader.getConfigValue("SheetName");
             ConfigReader.getConfigValue("MyCount");
             addTestStepLog("SheetName : " +ConfigReader.getConfigValue("SheetName") + " MyCount :" +ConfigReader.getConfigValue("MyCount"));
             System.out.println("SheetName : " +ConfigReader.getConfigValue("SheetName") + " MyCount : " +ConfigReader.getConfigValue("MyCount"));
+            screenShot.fieldname("SheetName : " +ConfigReader.getConfigValue("SheetName") + " MyCount : " +ConfigReader.getConfigValue("MyCount"));
         }
         //UPDATE
         else if (dateCount != null){
@@ -72,6 +74,7 @@ public class testCount {
             ConfigReader.getConfigValue("MyCount");
             addTestStepLog("SheetName : " +ConfigReader.getConfigValue("SheetName") + " MyCount : " +ConfigReader.getConfigValue("MyCount"));
             System.out.println("SheetName : " +ConfigReader.getConfigValue("SheetName") + " MyCount : " +ConfigReader.getConfigValue("MyCount"));
+            screenShot.fieldname("SheetName : " +ConfigReader.getConfigValue("SheetName") + " MyCount : " +ConfigReader.getConfigValue("MyCount"));
 
         }
 

@@ -34,6 +34,7 @@ public class google_Page {
         loginPage.pageLogin(configReader.getValue("Url"));
         addTestStepLog("testpass");
         screenShot.takescreenshot("naveen1");
+        screenShot.fieldname("abcpass");
 
     }
 

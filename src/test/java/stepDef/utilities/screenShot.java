@@ -15,4 +15,10 @@ public class screenShot {
         byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
         scenario.attach(sourcePath, "image/png", screenShotName);
     }
+
+    public static void fieldname(String name){
+        System.out.println("field name");
+        Scenario scenario = (Scenario) ConfigReader.getScenarioContext("Scenario");
+        scenario.log(name);
+    }
 }
