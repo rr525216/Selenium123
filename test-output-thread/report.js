@@ -1,21 +1,21 @@
 $(document).ready(function() {
 CucumberHTML.timelineItems.pushArray([
   {
-    "id": "31fd9604-8442-4566-80cc-a654c6b0b882",
+    "id": "0ad8a5a9-4885-4cce-a2dd-6b14298bdbce",
     "feature": "Account Page Feature",
     "scenario": "Accounts page title",
-    "start": 1669056532879,
-    "group": 15,
+    "start": 1669284795363,
+    "group": 1,
     "content": "",
-    "tags": "@naveen123,@googlepage23,",
-    "end": 1669056555183,
+    "tags": "@naveen123,@googlepage23,@navww,@123,@amazonproduct,@amazonproduct,",
+    "end": 1669284817189,
     "className": "passed"
   }
 ]);
 CucumberHTML.timelineGroups.pushArray([
   {
-    "id": 15,
-    "content": "Thread[TestNG-PoolService-0,5,main]"
+    "id": 1,
+    "content": "Thread[main,5,main]"
   }
 ]);
 });

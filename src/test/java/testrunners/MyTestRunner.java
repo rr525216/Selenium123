@@ -16,7 +16,7 @@ import io.cucumber.junit.CucumberOptions;
 		},
 		features = {"features"},
 		glue = {"stepDef"},
-		tags = "@googlepage"
+		tags = "@AmazonProduct"
 		
 		)
 
