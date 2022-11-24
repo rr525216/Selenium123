@@ -45,11 +45,9 @@ public class ApplicationHooks {
 		}
 
 		try{
-
 			testCount.counter(scenario);
-
 		}
-		catch (Exception e){
+		catch (Throwable e){
 			System.out.println("count is not working");
 		}
 	}
