@@ -27,9 +27,11 @@ public class Reader {
                 }
                 recordset.close();
                 connection.close();
-            } catch (FilloException e) {
-               // e.printStackTrace();
-            } catch (Throwable e) {
+            }
+//            catch (FilloException e) {
+//               // e.printStackTrace();
+//            }
+            catch (Throwable e) {
                // e.printStackTrace();
             }
 
