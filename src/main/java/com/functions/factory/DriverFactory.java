@@ -2,6 +2,7 @@ package com.functions.factory;
 
 
 
+import com.functions.util.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,6 +12,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class DriverFactory {
 
 	public static WebDriver driver;
+
+
 
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
 
@@ -28,7 +31,11 @@ public class DriverFactory {
 			options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
 			options.addArguments("--no-sandbox"); // Bypass OS security model
 			//WebDriver tlDriver = new ChromeDriver(options);
-			WebDriverManager.chromedriver().setup();
+//			WebDriverManager.chromedriver().setup();
+//			tlDriver.set(new ChromeDriver(options));
+
+		//	System.setProperty("webdriver.chrome.driver", ConfigReader.getConfigValue("chromepath"));
+			System.setProperty("webdriver.chrome.driver", ".\\src\\main\\java\\com\\functions\\factory\\chromedriver.exe");
 			tlDriver.set(new ChromeDriver(options));
 
 		} else {
