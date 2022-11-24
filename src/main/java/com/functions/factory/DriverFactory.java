@@ -2,6 +2,7 @@ package com.functions.factory;
 
 
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -27,6 +28,7 @@ public class DriverFactory {
 			options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
 			options.addArguments("--no-sandbox"); // Bypass OS security model
 			//WebDriver tlDriver = new ChromeDriver(options);
+			WebDriverManager.chromedriver().setup();
 			tlDriver.set(new ChromeDriver(options));
 
 		} else {
