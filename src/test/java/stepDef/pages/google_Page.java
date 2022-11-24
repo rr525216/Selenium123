@@ -3,15 +3,12 @@ package stepDef.pages;
 import com.pages.LoginPage;
 import com.functions.factory.DriverFactory;
 import com.functions.util.ConfigReader;
-//import com.qa.util.testContext;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import stepDef.utilities.naveenPractice;
 import stepDef.utilities.screenShot;
 
 import java.util.Properties;
