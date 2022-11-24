@@ -8,8 +8,10 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import stepDef.utilities.naveenPractice;
 import stepDef.utilities.screenShot;
 
 import java.util.Properties;
@@ -40,14 +42,56 @@ public class google_Page {
 
     @And("User click Best")
     public void userClickBest() {
-
         loginPage.best();
-        screenShot.takescreenshot("naveen2");
+        screenShot.takescreenshot("best seller");
     }
 
     @Then("test fail")
     public void testFail() {
 
         Assert.fail();
+    }
+
+    @And("user click Best Seller {string}")
+    public void userClickBestSeller(String arg0) {
+        loginPage.bestselleproduct();
+        screenShot.takescreenshot("bestseller product");
+
+
+    }
+
+    @And("user click Best Seller in {string}")
+    public void userClickBestSellerIn(String arg0) {
+        loginPage.music();
+        screenShot.takescreenshot("music");
+    }
+
+    @Then("Select the Trending seller {string}")
+    public void selectTheTrendingSeller(String arg0) {
+        loginPage.tred();
+        screenShot.takescreenshot("trend product");
+
+
+    }
+
+    @Then("Add WishList")
+    public void addWishList() {
+        loginPage.wishlist();
+        screenShot.takescreenshot("wish List");
+
+    }
+
+    @Then("Add Cart")
+    public void addCart() throws InterruptedException {
+        Thread.sleep(40000);
+        loginPage.cart();
+        screenShot.takescreenshot("cart");
+    }
+
+    @Then("Go to Cart")
+    public void goToCart() throws InterruptedException {
+        Thread.sleep(40000);
+        loginPage.gotocart();
+        screenShot.takescreenshot(" go to cart");
     }
 }
