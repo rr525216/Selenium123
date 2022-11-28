@@ -12,5 +12,4 @@ Feature: Account Page Feature
     Then Add WishList
 #    Then Add Cart
 #    Then Go to Cart
-
 #    Then test fail
