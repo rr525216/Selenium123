@@ -39,12 +39,14 @@ public class DriverFactory {
 //			tlDriver.set(new ChromeDriver(options));
 
 
-			WebDriverManager.chromedriver().setup();
-			ChromeOptions options = new ChromeOptions();
-			options.addArguments("--no-sandbox");
-			options.addArguments("--disable-dev-shm-usage");
-			options.addArguments("--headless");
-			tlDriver.set(new ChromeDriver(options));
+//			WebDriverManager.chromedriver().setup();
+			//cloud
+//			ChromeOptions options = new ChromeOptions();
+//			options.addArguments("--no-sandbox");
+//			options.addArguments("--disable-dev-shm-usage");
+//			options.addArguments("--headless");
+//			tlDriver.set(new ChromeDriver(options));
+			tlDriver.set(new ChromeDriver());
 
 		} else {
 			System.out.println("Please pass the correct browser value: " + browser);
