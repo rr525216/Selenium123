@@ -7,6 +7,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import java.io.File;
 
 
 public class DriverFactory {
@@ -46,6 +49,12 @@ public class DriverFactory {
 //			options.addArguments("--disable-dev-shm-usage");
 //			options.addArguments("--headless");
 //			tlDriver.set(new ChromeDriver(options));
+
+			ChromeOptions options = new ChromeOptions();
+			options.addExtensions(new File(".\\src\\main\\java\\com\\functions\\factory\\extension_5_3_2_0.crx"));
+			DesiredCapabilities capabilities = new DesiredCapabilities();
+			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+			options.merge(capabilities);
 			tlDriver.set(new ChromeDriver());
 
 		} else {
