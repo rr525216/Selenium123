@@ -15,7 +15,7 @@ import io.cucumber.testng.CucumberOptions;
 		monochrome = true,
 		features = {"features"},
 		glue = {"stepDef"},
-		tags = "@AmazonProduct"
+		tags = "@naveenreddy"
 )
 
 public class ParallelRun extends AbstractTestNGCucumberTests {
