@@ -51,10 +51,16 @@ public class DriverFactory {
 //			tlDriver.set(new ChromeDriver(options));
 
 			ChromeOptions options = new ChromeOptions();
-			options.addExtensions(new File(".\\src\\main\\java\\com\\functions\\factory\\extension_5_3_2_0.crx"));
-			DesiredCapabilities capabilities = new DesiredCapabilities();
-			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-			options.merge(capabilities);
+//			options.addExtensions(new File(".\\src\\main\\java\\com\\functions\\factory\\extension_5_3_2_0.crx"));
+//			DesiredCapabilities capabilities = new DesiredCapabilities();
+//			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+//			options.merge(capabilities);
+			options.addArguments("start-maximized"); // open Browser in maximized mode
+			options.addArguments("disable-infobars"); // disabling infobars
+			options.addArguments("--disable-extensions"); // disabling extensions
+			options.addArguments("--disable-gpu"); // applicable to windows os only
+			options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+			options.addArguments("--no-sandbox");
 			tlDriver.set(new ChromeDriver(options));
 
 		} else {
