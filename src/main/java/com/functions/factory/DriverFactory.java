@@ -55,7 +55,7 @@ public class DriverFactory {
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 			options.merge(capabilities);
-			tlDriver.set(new ChromeDriver());
+			tlDriver.set(new ChromeDriver(options));
 
 		} else {
 			System.out.println("Please pass the correct browser value: " + browser);
