@@ -1,30 +1,31 @@
 package com.functions.factory;
 
 
-
-import com.functions.util.ConfigReader;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
-
-import java.io.File;
-
+import org.openqa.selenium.chrome.*;
 
 public class DriverFactory {
 
-	public static WebDriver driver;
+    public static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
+    private static DriverFactory driverFactory = null;
 
+    public DriverFactory() {
+    }
 
-	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
+    public static DriverFactory getInstance() {
 
-	public WebDriver init_driver(String browser) {
+        if (driverFactory == null) {
+            driverFactory = new DriverFactory();
+        }
+        return driverFactory;
+    }
 
-		System.out.println("browser value is: " + browser);
+    public WebDriver init_driver(String browser) {
 
-		if (browser.equals("chrome")) {
+//        System.out.println("browser value is: " + browser);
+
+        if (browser.equals("chrome")) {
 
 //			ChromeOptions options = new ChromeOptions();
 //			options.addArguments("start-maximized"); // open Browser in maximized mode
@@ -33,48 +34,49 @@ public class DriverFactory {
 //			options.addArguments("--disable-gpu"); // applicable to windows os only
 //			options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
 //			options.addArguments("--no-sandbox"); // Bypass OS security model
-			//WebDriver tlDriver = new ChromeDriver(options);
+            //WebDriver tlDriver = new ChromeDriver(options);
 //			WebDriverManager.chromedriver().setup();
 //			tlDriver.set(new ChromeDriver(options));
 
-		//	System.setProperty("webdriver.chrome.driver", ConfigReader.getConfigValue("chromepath"));
+            //	System.setProperty("webdriver.chrome.driver", ConfigReader.getConfigValue("chromepath"));
 //			System.setProperty("webdriver.chrome.driver", ".\\src\\main\\java\\com\\functions\\factory\\chromedriver.exe");
 //			tlDriver.set(new ChromeDriver(options));
 
 
 //			WebDriverManager.chromedriver().setup();
-			//cloud
+            //cloud
 //			ChromeOptions options = new ChromeOptions();
 //			options.addArguments("--no-sandbox");
 //			options.addArguments("--disable-dev-shm-usage");
 //			options.addArguments("--headless");
 //			tlDriver.set(new ChromeDriver(options));
 
-			ChromeOptions options = new ChromeOptions();
+            ChromeOptions options = new ChromeOptions();
 //			options.addExtensions(new File(".\\src\\main\\java\\com\\functions\\factory\\extension_5_3_2_0.crx"));
 //			DesiredCapabilities capabilities = new DesiredCapabilities();
 //			capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 //			options.merge(capabilities);
-			options.addArguments("start-maximized"); // open Browser in maximized mode
-			options.addArguments("disable-infobars"); // disabling infobars
-			options.addArguments("--disable-extensions"); // disabling extensions
-			options.addArguments("--disable-gpu"); // applicable to windows os only
-			options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-			options.addArguments("--no-sandbox");
-			tlDriver.set(new ChromeDriver(options));
+            options.addArguments("start-maximized"); // open Browser in maximized mode
+            options.addArguments("disable-infobars"); // disabling infobars
+            options.addArguments("--disable-extensions"); // disabling extensions
+            options.addArguments("--disable-gpu"); // applicable to windows os only
+            options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+            options.addArguments("--no-sandbox");
+            driver.set(new ChromeDriver(options));
 
-		} else {
-			System.out.println("Please pass the correct browser value: " + browser);
-		}
+        } else {
+            System.out.println("Please pass the correct browser value: " + browser);
+        }
 
-		getDriver().manage().deleteAllCookies();
-		getDriver().manage().window().maximize();
-		return getDriver();
+        getDriver().manage().deleteAllCookies();
+        getDriver().manage().window().maximize();
+        return getDriver();
 
-	}
+    }
 
-	public static synchronized WebDriver getDriver() {
-		return tlDriver.get();
-	}
+    public static synchronized WebDriver getDriver() {
+        return driver.get();
+    }
+
 
 }

@@ -2,28 +2,55 @@ package stepDef.utilities;
 
 import com.functions.util.ConfigReader;
 import io.cucumber.java.Scenario;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 
 public class screenShot {
+
+    public ConfigReader configReader = ConfigReader.getInstance();
+
     public static WebDriver driver;
-    public static void takescreenshot(String screenShotName) {
+
+    public static Scenario scenario;
+
+    private static screenShot screenShot = null;
+
+    public screenShot() {
+    }
+
+    public static screenShot getInstance() {
+
+        if (screenShot == null) {
+            screenShot = new screenShot();
+        }
+        return screenShot;
+    }
+
+
+    public  void takescreenshot(String screenShotName) {
+
+
         try {
-            System.out.println(ConfigReader.getScenarioContext("Scenario"));
-            Scenario scenario = (Scenario) ConfigReader.getScenarioContext("Scenario");
-            driver = ConfigReader.getDriver("driver");
+           // System.out.println(configReader.getScenarioContext("Scenario"));
+            driver = configReader.getDriver("driver");
+            System.out.println(" ss driver : " + driver);
+            scenario = (Scenario) configReader.getScenarioContext("Scenario");
+
             byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
             scenario.attach(sourcePath, "image/png", screenShotName);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println("screen shot not found");
         }
     }
 
-    public static void fieldname(String name){
-        System.out.println("field name");
-        Scenario scenario = (Scenario) ConfigReader.getScenarioContext("Scenario");
-        scenario.log(name);
+    public  void fieldname(String name) {
+
+        try {
+
+            scenario = (Scenario) configReader.getScenarioContext("Scenario");
+            scenario.log(name);
+        }
+        catch (Exception e){
+            System.out.println("field name not found");
+        }
     }
 }

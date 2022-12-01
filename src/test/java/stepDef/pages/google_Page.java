@@ -1,46 +1,47 @@
 package stepDef.pages;
 
+import com.functions.factory.drivers;
 import com.pages.LoginPage;
-import com.functions.factory.DriverFactory;
 import com.functions.util.ConfigReader;
-import io.cucumber.java.Scenario;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
+import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import stepDef.utilities.screenShot;
-
-import java.util.Properties;
 
 import static com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter.addTestStepLog;
 
 public class google_Page {
 
-    private static String title;
-    public static WebDriver driver;
-    public static Scenario scenario;
-    private DriverFactory driverFactory;
-    private ConfigReader configReader;
-    Properties prop;
-    private LoginPage loginPage ;
+    private ConfigReader configReader = ConfigReader.getInstance();
+    private LoginPage loginPage = LoginPage.getInstance();
+    private screenShot screenshot = screenShot.getInstance();
+    private drivers driversLaunch = drivers.getInstance();
+    public WebDriver driver;
+
 
     @Given("user is on Accounts page")
     public void user_is_on_accounts_page() {
 
-        ConfigReader.setDriver("driver",DriverFactory.getDriver());
-        loginPage = new LoginPage(DriverFactory.getDriver());
+
+        //  launch
+        driver = driversLaunch.driverLaunch();
+
+        //POM page
+        loginPage.loginPage(driver);
+
+        //launch URL
         loginPage.pageLogin(configReader.getValue("Url"));
-        addTestStepLog("testpass");
-        screenShot.takescreenshot("naveen1");
-        screenShot.fieldname("abcpass");
+
+        addTestStepLog("test start");
+        screenshot.takescreenshot("login");
+        screenshot.fieldname("field pass");
 
     }
 
     @And("User click Best")
     public void userClickBest() {
         loginPage.best();
-        screenShot.takescreenshot("best seller");
+        screenshot.takescreenshot("best seller");
     }
 
     @Then("test fail")
@@ -52,7 +53,7 @@ public class google_Page {
     @And("user click Best Seller {string}")
     public void userClickBestSeller(String arg0) {
         loginPage.bestselleproduct();
-        screenShot.takescreenshot("bestseller product");
+        screenshot.takescreenshot("bestseller product");
 
 
     }
@@ -60,13 +61,13 @@ public class google_Page {
     @And("user click Best Seller in {string}")
     public void userClickBestSellerIn(String arg0) {
         loginPage.music();
-        screenShot.takescreenshot("music");
+        screenshot.takescreenshot("music");
     }
 
     @Then("Select the Trending seller {string}")
     public void selectTheTrendingSeller(String arg0) {
         loginPage.tred();
-        screenShot.takescreenshot("trend product");
+        screenshot.takescreenshot("trend product");
 
 
     }
@@ -74,7 +75,7 @@ public class google_Page {
     @Then("Add WishList")
     public void addWishList() {
         loginPage.wishlist();
-        screenShot.takescreenshot("wish List");
+        screenshot.takescreenshot("wish List");
 
     }
 
@@ -82,13 +83,13 @@ public class google_Page {
     public void addCart() throws InterruptedException {
         Thread.sleep(40000);
         loginPage.cart();
-        screenShot.takescreenshot("cart");
+        screenshot.takescreenshot("cart");
     }
 
     @Then("Go to Cart")
     public void goToCart() throws InterruptedException {
         Thread.sleep(40000);
         loginPage.gotocart();
-        screenShot.takescreenshot(" go to cart");
+        screenshot.takescreenshot(" go to cart");
     }
 }

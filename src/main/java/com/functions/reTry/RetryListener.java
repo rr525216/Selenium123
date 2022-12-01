@@ -1,7 +1,6 @@
 package com.functions.reTry;
 
-import org.testng.IRetryAnalyzer;
-import org.testng.ITestResult;
+import org.testng.*;
 
 public class RetryListener implements IRetryAnalyzer {
 

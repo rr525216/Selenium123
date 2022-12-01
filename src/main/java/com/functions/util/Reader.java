@@ -1,20 +1,33 @@
 package com.functions.util;
 
 import com.codoid.products.exception.FilloException;
-import com.codoid.products.fillo.Connection;
-import com.codoid.products.fillo.Fillo;
-import com.codoid.products.fillo.Recordset;
+import com.codoid.products.fillo.*;
+import java.util.*;
 
-import java.util.Map;
-import java.util.TreeMap;
 
 public class Reader {
 
-        public static  Map<String,String> getTestdataInmap(String sheetname,String date){
+    private ConfigReader configReader = ConfigReader.getInstance();
+    private static Reader reader = null;
+
+    public Reader() {
+    }
+
+    public static Reader getInstance() {
+
+        if (reader == null) {
+            reader = new Reader();
+        }
+        return reader;
+    }
+
+
+
+        public   Map<String,String> getTestdataInmap(String sheetname,String date){
 
             Map<String,String> TestDatainMap = new TreeMap<String,String>();
             String query = "SELECT * FROM "+sheetname+" WHERE Date= '"+date+"'";
-            String filePath = ConfigReader.getValue("testPath");
+            String filePath = configReader.getValue("testPath");
             try {
                 Fillo fillo = new Fillo();
                 Connection connection = fillo.getConnection(filePath);
@@ -38,7 +51,7 @@ public class Reader {
             return TestDatainMap;
         }
 
-    public static  Map<String,String> UpdateTestdataInmap(String sheetname,String counter,String date){
+    public  Map<String,String> UpdateTestdataInmap(String sheetname,String counter,String date){
 
         Map<String,String> TestDatainMap = new TreeMap<String,String>();
 
@@ -46,7 +59,7 @@ public class Reader {
         int counts=count+1;
 
         String query = "Update "+sheetname+" Set Count='"+counts+"' where Date ='"+date+"'";
-        String filePath = ConfigReader.getValue("testPath");
+        String filePath = configReader.getValue("testPath");
         try {
             Fillo fillo = new Fillo();
             Connection connection = fillo.getConnection(filePath);
@@ -63,11 +76,11 @@ public class Reader {
         return TestDatainMap;
     }
 
-    public static  Map<String,String> insertTestdataInmap(String sheetname,String date){
+    public  Map<String,String> insertTestdataInmap(String sheetname,String date){
 
         Map<String,String> TestDatainMap = new TreeMap<String,String>();
         String query = "INSERT INTO "+sheetname+" (Date,Count) VALUES ('"+date+"','1')";
-        String filePath = ConfigReader.getValue("testPath");
+        String filePath = configReader.getValue("testPath");
         try {
             Fillo fillo = new Fillo();
             Connection connection = fillo.getConnection(filePath);

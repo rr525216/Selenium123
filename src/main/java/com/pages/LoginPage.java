@@ -1,85 +1,102 @@
 package com.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.*;
 
 public class LoginPage {
 
-	private WebDriver driver;
-	private  By bestseller =By.xpath("(//a[contains(text(),'Best Sellers')])[1]");
+    private WebDriver driver;
+
+    private static LoginPage loginPage = null;
+
+    public JavascriptExecutor javascriptExecutor;
+
+    private LoginPage() {
+    }
+
+    public static LoginPage getInstance() {
+
+        if (loginPage == null) {
+            loginPage = new LoginPage();
+        }
+        return loginPage;
+    }
 
 
-	private  By bestselleproduct =By.xpath("//a[contains(text(),'Software')]");
+    //POM
+    private By bestseller = By.xpath("(//a[contains(text(),'Best Sellers')])[1]");
+    private By bestselleproduct = By.xpath("//a[contains(text(),'Software')]");
+    private By music = By.xpath("//span[contains(text(),'Software')]/following::a[contains(text(),'Music')][1]");
+    private By prodOne = By.xpath("(//span[starts-with(text(),'#1')])[1]");
+    private By tred = By.xpath("(//span[starts-with(text(),'#1')])[1]/following::a[2]");
+    private By wishlist = By.xpath("//a[contains(text(),'Add to Wish List')]");
+    private By cart = By.xpath("//span[contains(text(),'Add to Cart')]");
+    private By gotocart = By.xpath("(//a[contains(text(),'Go to Cart')])[2]");
+
+   //Page Factory
+    public void  loginPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+        javascriptExecutor = (JavascriptExecutor) driver;
+    }
+
+    @FindBy(xpath = "//a[contains(text(),'Add to Wish List')]")
+    WebElement wishlists;
+
+    @FindBy(xpath = "//span[contains(text(),'Add to Cart')]")
+    WebElement carts;
+
+    @FindBy(xpath = "(//a[contains(text(),'Best Sellers')])[1]")
+    WebElement bestsellerss;
 
 
-	private  By music = By.xpath("//span[contains(text(),'Software')]/following::a[contains(text(),'Music')][1]");
+    public String getLoginPageTitle() {
+        return driver.getTitle();
+    }
 
-	private  By prodOne =By.xpath("(//span[starts-with(text(),'#1')])[1]");
+    public void best() {
+        bestsellerss.click();
 
-	private  By tred =By.xpath("(//span[starts-with(text(),'#1')])[1]/following::a[2]");
+    }
 
-	private  By wishlist =By.xpath("//a[contains(text(),'Add to Wish List')]");
-	private  By cart =By.xpath("//span[contains(text(),'Add to Cart')]");
-	private  By gotocart =By.xpath("(//a[contains(text(),'Go to Cart')])[2]");
+    public void pageLogin(String url) {
 
+        driver.get(url);
 
+    }
 
+    public void bestselleproduct() {
+        driver.findElement(bestselleproduct).click();
+    }
 
-	public LoginPage(WebDriver driver) {
-		this.driver = driver;
-	}
+    public void music() {
+        driver.findElement(music).click();
+    }
 
-	public String getLoginPageTitle() {
-		return driver.getTitle();
-	}
-	public void  best() {
-		driver.findElement(bestseller).click();
-	}
+    public void prodOne() {
+        driver.findElement(prodOne).click();
+    }
 
-	public void pageLogin(String url){
+    public void tred() {
+        driver.findElement(tred).click();
+    }
 
-		driver.get(url);
+    public void wishlist() {
+        wishlists.click();
 
-	}
-	public void  bestselleproduct() {
-		driver.findElement(bestselleproduct).click();
-	}
-	public void  music() {
-		driver.findElement(music).click();
-	}
+    }
 
-	public void  prodOne() {
-		driver.findElement(prodOne).click();
-	}
+    public String cart() throws InterruptedException {
 
-	public void  tred() {
-		driver.findElement(tred).click();
-	}
+        javascriptExecutor.executeScript("arguments[0].click();", carts);
+        String txt = carts.getText();
+        return txt;
 
-	public void  wishlist() {
-		driver.findElement(wishlist).click();
-	}
-	public void  cart() throws InterruptedException {
+    }
 
-		WebElement element =driver.findElement(By.xpath("//span[contains(text(),'Add to Cart')]"));
-		//element.isEnabled();
-	//	element.click();
-		JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
-		javascriptExecutor.executeScript("arguments[0].click();",element);
-
-	}
-	public void  gotocart() {
-	//	driver.findElement(gotocart).click();
-
-		WebElement element =driver.findElement(By.xpath("(//a[contains(text(),'Go to Cart')])[2]"));
-		//element.isEnabled();
-		//	element.click();
-		JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
-		javascriptExecutor.executeScript("arguments[0].click();",element);
-	}
-
-
+    public void gotocart() {
+        WebElement element = driver.findElement(By.xpath("(//a[contains(text(),'Go to Cart')])[2]"));
+        javascriptExecutor.executeScript("arguments[0].click();", element);
+    }
 
 }

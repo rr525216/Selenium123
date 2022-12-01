@@ -1,9 +1,7 @@
 package testrunners;
 
 import org.testng.annotations.DataProvider;
-
-import io.cucumber.testng.AbstractTestNGCucumberTests;
-import io.cucumber.testng.CucumberOptions;
+import io.cucumber.testng.*;
 
 @CucumberOptions(
 		plugin = {"pretty",
@@ -15,7 +13,7 @@ import io.cucumber.testng.CucumberOptions;
 		monochrome = true,
 		features = {"features"},
 		glue = {"stepDef"},
-		tags = "@naveenreddy"
+		tags = "@AmazonProduct11111111"
 )
 
 public class ParallelRun extends AbstractTestNGCucumberTests {
