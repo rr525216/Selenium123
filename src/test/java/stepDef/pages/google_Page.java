@@ -52,13 +52,13 @@ public class google_Page {
     }
 
     @And("user click Best Seller {string}")
-    public void userClickBestSeller(String arg0) {
+    public void userClickBestSeller(String arg0) throws InterruptedException {
         loginPage.bestselleproduct();
         screenshot.takescreenshot("bestseller product");
     }
 
     @And("user click Best Seller in {string}")
-    public void userClickBestSellerIn(String arg0) {
+    public void userClickBestSellerIn(String arg0) throws InterruptedException {
         loginPage.music();
         screenshot.takescreenshot("music");
     }
@@ -92,14 +92,5 @@ public class google_Page {
         screenshot.takescreenshot(" go to cart");
     }
 
-    @Given("User get the DATA")
-    public void userGetTheDATA() {
 
-        RequestSpecification httpRequest = RestAssured.given();
-        Response response = httpRequest.get("https://demoqa.com/BookStore/v1/Books");
-        int statusCode = response.getStatusCode();
-        Assert.assertEquals(statusCode , 200,   "Correct status code returned");
-        System.out.println(response.prettyPrint());
-
-    }
 }

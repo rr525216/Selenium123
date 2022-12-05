@@ -52,6 +52,9 @@ public class LoginPage {
         actions = new Actions(driver);
     }
 
+    @FindBy(xpath = "(//span[starts-with(text(),'#1')])[1]")
+    WebElement productsOne;
+
     @FindBy(xpath = "//a[contains(text(),'Add to Wish List')]")
     WebElement wishlists;
 
@@ -63,6 +66,12 @@ public class LoginPage {
 
     @FindBy(xpath = "(//span[starts-with(text(),'#1')])[1]/following::a[2]")
     WebElement trends;
+
+    @FindBy(xpath = "//a[contains(text(),'Software')]")
+    WebElement bestSellers;
+
+    @FindBy(xpath = "//span[contains(text(),'Software')]/following::a[contains(text(),'Music')][1]")
+    WebElement Music;
 
 
     public void best() {
@@ -76,16 +85,23 @@ public class LoginPage {
 
     }
 
-    public void bestselleproduct() {
-        driver.findElement(bestselleproduct).click();
+    public void bestselleproduct() throws InterruptedException {
+        //driver.findElement(bestselleproduct).click();
+        Thread.sleep(2000);
+        actions.moveToElement(bestSellers).click().build();
+        //javascriptExecutor.executeScript("arguments[0].click();", bestselleproduct);
     }
 
-    public void music() {
-        driver.findElement(music).click();
+    public void music() throws InterruptedException {
+        Thread.sleep(2000);
+        actions.moveToElement(Music).click().build();
     }
 
-    public void prodOne() {
-        driver.findElement(prodOne).click();
+    public void prodOne() throws InterruptedException {
+
+        Thread.sleep(3000);
+        //driver.findElement(prodOne).click();
+        javascriptExecutor.executeScript("arguments[0].click();", productsOne);
     }
 
     public void tred() {

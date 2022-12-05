@@ -46,9 +46,5 @@ public class ApplicationHooks {
 
 
     }
-//    @After(order = 1)
-//    public void tearDown(){
-//        configReader.getDriver("driver").quit();
-//    }
 
 }

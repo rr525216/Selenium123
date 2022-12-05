@@ -2,7 +2,7 @@
 @naveenreddy
 Feature: Account Page Feature
 
-  @googlepage23 @navww @123 @AmazonProduct @AmazonProduct11111111
+  @googlepage23 @navww @123 @AmazonProduct @AmazonProduct11111111 @WEB-Rest
   Scenario: Accounts page title
     Given user is on Accounts page
     And User click Best
