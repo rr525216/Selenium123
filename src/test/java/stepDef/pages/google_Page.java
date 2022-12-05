@@ -4,6 +4,9 @@ import com.functions.factory.drivers;
 import com.pages.LoginPage;
 import com.functions.util.ConfigReader;
 import io.cucumber.java.en.*;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import stepDef.utilities.screenShot;
@@ -87,5 +90,16 @@ public class google_Page {
         Thread.sleep(40000);
         loginPage.gotocart();
         screenshot.takescreenshot(" go to cart");
+    }
+
+    @Given("User get the DATA")
+    public void userGetTheDATA() {
+
+        RequestSpecification httpRequest = RestAssured.given();
+        Response response = httpRequest.get("https://demoqa.com/BookStore/v1/Books");
+        int statusCode = response.getStatusCode();
+        Assert.assertEquals(statusCode , 200,   "Correct status code returned");
+        System.out.println(response.prettyPrint());
+
     }
 }
