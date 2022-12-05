@@ -35,7 +35,7 @@ public class ApplicationHooks {
                 configReader.getDriver("driver").quit();
             }
         } catch (Exception e) {
-            System.out.println("After scenario failed");
+            System.out.println("After scenario ");
         }
 
         try {
