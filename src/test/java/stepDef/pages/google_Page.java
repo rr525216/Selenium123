@@ -22,7 +22,6 @@ public class google_Page {
     @Given("user is on Accounts page")
     public void user_is_on_accounts_page() {
 
-
         //  launch
         driver = driversLaunch.driverLaunch();
 
@@ -46,7 +45,6 @@ public class google_Page {
 
     @Then("test fail")
     public void testFail() {
-
         Assert.fail();
     }
 
@@ -54,8 +52,6 @@ public class google_Page {
     public void userClickBestSeller(String arg0) {
         loginPage.bestselleproduct();
         screenshot.takescreenshot("bestseller product");
-
-
     }
 
     @And("user click Best Seller in {string}")
@@ -73,7 +69,7 @@ public class google_Page {
     }
 
     @Then("Add WishList")
-    public void addWishList() {
+    public void addWishList() throws InterruptedException {
         loginPage.wishlist();
         screenshot.takescreenshot("wish List");
 

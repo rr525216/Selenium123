@@ -3,6 +3,8 @@ package com.functions.factory;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class DriverFactory {
 
@@ -64,7 +66,15 @@ public class DriverFactory {
             options.addArguments("--no-sandbox");
             driver.set(new ChromeDriver(options));
 
-        } else {
+
+
+        }
+        if (browser.equals("firefox")) {
+            FirefoxOptions options = new FirefoxOptions();
+            driver.set(new FirefoxDriver(options));
+        }
+
+        else {
             System.out.println("Please pass the correct browser value: " + browser);
         }
 

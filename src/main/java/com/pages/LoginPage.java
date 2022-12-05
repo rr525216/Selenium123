@@ -1,7 +1,11 @@
 package com.pages;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.*;
+import org.openqa.selenium.support.ui.*;
+import java.time.Duration;
 
 public class LoginPage {
 
@@ -9,7 +13,13 @@ public class LoginPage {
 
     private static LoginPage loginPage = null;
 
-    public JavascriptExecutor javascriptExecutor;
+    private JavascriptExecutor javascriptExecutor;
+
+    private WebDriverWait wait;
+
+    private Actions actions;
+
+
 
     private LoginPage() {
     }
@@ -33,11 +43,13 @@ public class LoginPage {
     private By cart = By.xpath("//span[contains(text(),'Add to Cart')]");
     private By gotocart = By.xpath("(//a[contains(text(),'Go to Cart')])[2]");
 
-   //Page Factory
-    public void  loginPage(WebDriver driver) {
+    //Page Factory
+    public void loginPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
         javascriptExecutor = (JavascriptExecutor) driver;
+        wait = new WebDriverWait(driver, Duration.ofMinutes(5));
+        actions = new Actions(driver);
     }
 
     @FindBy(xpath = "//a[contains(text(),'Add to Wish List')]")
@@ -49,10 +61,9 @@ public class LoginPage {
     @FindBy(xpath = "(//a[contains(text(),'Best Sellers')])[1]")
     WebElement bestsellerss;
 
+    @FindBy(xpath = "(//span[starts-with(text(),'#1')])[1]/following::a[2]")
+    WebElement trends;
 
-    public String getLoginPageTitle() {
-        return driver.getTitle();
-    }
 
     public void best() {
         bestsellerss.click();
@@ -78,11 +89,22 @@ public class LoginPage {
     }
 
     public void tred() {
-        driver.findElement(tred).click();
+
+        javascriptExecutor.executeScript("arguments[0].click();", trends);
     }
 
-    public void wishlist() {
-        wishlists.click();
+    public void wishlist() throws InterruptedException {
+
+       // Thread.sleep(2000);
+       // wishlists.click();
+
+//        Action mouseOverHome = actions
+//                .moveToElement(wishlists)
+//                .click()
+//                .build();
+        actions.moveToElement(wishlists).click().build();
+       // wait.until(ExpectedConditions.elementToBeClickable(wishlists)).click();
+        //javascriptExecutor.executeScript("arguments[0].click();", wishlists);
 
     }
 

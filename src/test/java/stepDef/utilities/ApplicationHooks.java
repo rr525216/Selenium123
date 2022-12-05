@@ -22,17 +22,20 @@ public class ApplicationHooks {
     @After(order = 0)
     public void tearDown(Scenario scenario) {
 
+        try {
+            if (scenario.isFailed()) {
+                scenario.log("scenario status : " + scenario.getStatus());
+                String screenshotName = scenario.getName().replaceAll(" ", "_");
+                byte[] sourcePath = ((TakesScreenshot) configReader.getDriver("driver")).getScreenshotAs(OutputType.BYTES);
+                scenario.attach(sourcePath, "image/png", screenshotName);
+                configReader.getDriver("driver").quit();
 
-        if (scenario.isFailed()) {
-            scenario.log("scenario status : " + scenario.getStatus());
-            String screenshotName = scenario.getName().replaceAll(" ", "_");
-            byte[] sourcePath = ((TakesScreenshot) configReader.getDriver("driver")).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(sourcePath, "image/png", screenshotName);
-            configReader.getDriver("driver").quit();
-
-        } else {
-            scenario.log("scenario status : " + scenario.getStatus());
-            configReader.getDriver("driver").quit();
+            } else {
+                scenario.log("scenario status : " + scenario.getStatus());
+                configReader.getDriver("driver").quit();
+            }
+        } catch (Exception e) {
+            System.out.println("After scenario failed");
         }
 
         try {
