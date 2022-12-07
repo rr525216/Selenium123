@@ -13,7 +13,7 @@ import io.cucumber.testng.*;
 		monochrome = true,
 		features = {"features"},
 		glue = {"stepDef"},
-		tags = "@WEB-Rest"
+		tags = "@MyREST"
 )
 
 public class ParallelRun extends AbstractTestNGCucumberTests {
