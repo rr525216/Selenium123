@@ -22,6 +22,7 @@ public class restAPI {
 
     List<String> ss = new ArrayList<>();
     List<String> ss1 = new ArrayList<>();
+   HashMap st = new HashMap();
 
     public JsonPath jsonPath;
 
@@ -37,15 +38,13 @@ public class restAPI {
 
         System.out.println("total Response : " + response.prettyPrint());
 
+        screenShot.fieldname("total Response : " + response.prettyPrint());
+
         jsonPath = response.jsonPath();
 
         HashMap a2 = null;
 
         int l2;
-
-        Integer key = null;
-
-
 
 //books
         List<String> bb = jsonPath.get("books");
@@ -58,7 +57,8 @@ public class restAPI {
             if (bb.size() != 0) {
                 if (a2 != null) {
 
-                    ss1.add(String.valueOf(a2));
+                    st.put(l2,a2);
+
 
                 } else if (a2 == null) {
                     break;
@@ -69,7 +69,7 @@ public class restAPI {
 
         }
 
-        ConfigReader.setConfigValue("book one",ss1.get(0));
+        ConfigReader.setConfigValue("hshkey", String.valueOf(st.get(0)));
 
         ///////author
 
@@ -94,18 +94,32 @@ public class restAPI {
 
         ConfigReader.setConfigValue("one", ss.get(1)+ "\n");
 
+
+       for (int k=0;k< ss.size();k++){
+
+           ss.get(k);
+
+           if(("Axel Rauschmayer").equals(ss.get(k))){
+               System.out.println("name equals : " +ss.get(k));
+               ss.clear();
+               break;
+           }
+       }
+
     }
 
 
     @Then("Response Code {int}")
     public void responseCode(int code) {
 
-        System.out.println(ConfigReader.getConfigValue("one"));
+        System.out.println("name  "+ ConfigReader.getConfigValue("one"));
 
-        System.out.println(  ConfigReader.getConfigValue("book one"));
+        System.out.println("hashhh : " + ConfigReader.getConfigValue("hshkey"));
 
         Assert.assertEquals(response.getStatusCode(), code);
         addTestStepLog(String.valueOf(response.getStatusCode()));
-        screenShot.fieldname(String.valueOf(response.getStatusCode()));
+        screenShot.fieldname("Status Code : " +String.valueOf(response.getStatusCode()));
     }
+
+
 }
