@@ -1,8 +1,6 @@
-package com.pages;
+package stepDef.pomPages;
 
-import com.microsoft.schemas.office.office.CTLock;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.*;
 import org.openqa.selenium.support.ui.*;
@@ -63,6 +61,7 @@ public class LoginPage {
     WebElement carts;
 
     @FindBy(xpath = "(//a[contains(text(),'Best Sellers')])[1]")
+    public
     WebElement bestsellerss;
 
     @FindBy(xpath = "(//span[starts-with(text(),'#1')])[1]/following::a[2]")

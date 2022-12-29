@@ -44,13 +44,10 @@ public class screenShot {
     }
 
 
-    public static void takeElementScreenShot(String screenShotName,WebElement element){
+    public  void takeElementScreenShot(String screenShotName,WebElement element){
 
        try {
-          // WebElement element = driver.findElement(By.xpath("(//a[contains(text(),'Best Sellers')])[1]"));
-
            byte[] file = element.getScreenshotAs(OutputType.BYTES);
-
            scenario.attach(file, "image/png", screenShotName);
        }
        catch (Exception e){

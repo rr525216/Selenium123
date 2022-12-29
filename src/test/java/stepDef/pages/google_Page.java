@@ -1,12 +1,9 @@
 package stepDef.pages;
 
 import com.functions.factory.drivers;
-import com.pages.LoginPage;
+import stepDef.pomPages.LoginPage;
 import com.functions.util.ConfigReader;
 import io.cucumber.java.en.*;
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 import org.openqa.selenium.*;
 import org.testng.Assert;
 import stepDef.utilities.screenShot;
@@ -42,12 +39,16 @@ public class google_Page {
         screenshot.takescreenshot("login");
         screenshot.fieldname("field pass");
 
+
+
     }
 
     @And("User click Best")
     public void userClickBest() {
         loginPage.best();
         screenshot.takescreenshot("best seller");
+
+        screenshot.takeElementScreenShot("element screenshot", loginPage.bestsellerss);
     }
 
     @Then("test fail")
