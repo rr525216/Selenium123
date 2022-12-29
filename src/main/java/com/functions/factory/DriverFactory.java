@@ -64,6 +64,12 @@ public class DriverFactory {
             options.addArguments("--disable-gpu"); // applicable to windows os only
             options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
             options.addArguments("--no-sandbox");
+
+          //  ChromeOptions options = new ChromeOptions();
+			options.addArguments("--no-sandbox");
+			options.addArguments("--disable-dev-shm-usage");
+			options.addArguments("--headless");
+		//	tlDriver.set(new ChromeDriver(options));
             driver.set(new ChromeDriver(options));
 
 
