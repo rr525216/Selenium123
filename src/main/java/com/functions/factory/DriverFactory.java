@@ -77,6 +77,9 @@ public class DriverFactory {
         }
         if (browser.equals("firefox")) {
             FirefoxOptions options = new FirefoxOptions();
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+           // options.addArguments("--headless");
             driver.set(new FirefoxDriver(options));
         }
 
