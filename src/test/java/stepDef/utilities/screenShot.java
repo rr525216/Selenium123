@@ -37,9 +37,26 @@ public class screenShot {
 
             byte[] sourcePath = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
             scenario.attach(sourcePath, "image/png", screenShotName);
+
         } catch (Exception e) {
             System.out.println("screen shot not found");
         }
+    }
+
+
+    public static void takeElementScreenShot(String screenShotName,WebElement element){
+
+       try {
+          // WebElement element = driver.findElement(By.xpath("(//a[contains(text(),'Best Sellers')])[1]"));
+
+           byte[] file = element.getScreenshotAs(OutputType.BYTES);
+
+           scenario.attach(file, "image/png", screenShotName);
+       }
+       catch (Exception e){
+           System.out.println("element screenShot not found");
+       }
+
     }
 
     public  void fieldname(String name) {
