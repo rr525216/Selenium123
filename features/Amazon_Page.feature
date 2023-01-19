@@ -11,3 +11,15 @@ Feature: Account Page Feature
     Given user is on Accounts page
     And User click Best
 #    Then test fail
+
+
+
+  @windowHandle
+  Scenario: Window Handle
+    Given Open multi windows
+
+
+
+  @TabHandle
+  Scenario: Tab Handle
+    Given Open MultiTabs

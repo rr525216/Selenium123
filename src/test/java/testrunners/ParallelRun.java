@@ -13,7 +13,8 @@ import io.cucumber.testng.*;
         monochrome = true,
         features = {"features"},
         glue = {"stepDef"},
-        tags = "@AmazonProductnmb"
+        dryRun = false,
+        tags = "@Appium"
 )
 
 public class ParallelRun extends AbstractTestNGCucumberTests {

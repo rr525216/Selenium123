@@ -43,7 +43,7 @@ public class LoginPage {
     private By gotocart = By.xpath("(//a[contains(text(),'Go to Cart')])[2]");
 
     //Page Factory
-    public void loginPage(WebDriver driver) {
+    public void LoginPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
         javascriptExecutor = (JavascriptExecutor) driver;
