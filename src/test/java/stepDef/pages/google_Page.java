@@ -223,12 +223,13 @@ public class google_Page {
     @Given("launch App")
     public void launchApp() throws MalformedURLException, InterruptedException {
 
+        //Driver launch
         driver = mobileDriverFactory.mobileDriverLaunch();
-        mobilePage = new MobilePage(driver);
 
+        //driver passing the MobilePage
+        mobilePage = new MobilePage(driver);
         ConfigReader.setDriver("driver", driver);
         screenshot.takescreenshot("Home Page");
-
         mobilePage.click_button();
 
 

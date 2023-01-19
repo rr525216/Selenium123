@@ -1,6 +1,7 @@
 package com.functions.factory;
 
 
+import com.functions.util.ConfigReader;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -9,26 +10,33 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class MobileDriverFactory{
+public class MobileDriverFactory {
 
     WebDriver driver;
 
+    ConfigReader configReader = ConfigReader.getInstance();
+
     public WebDriver mobileDriverLaunch() throws MalformedURLException {
 
+        //mobile Capabilities
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-        desiredCapabilities.setCapability("appium:platformName", "Android");
-        desiredCapabilities.setCapability("appium:deviceName", "RMX2117");
-        desiredCapabilities.setCapability("appium:platformVersion", "12");
-        desiredCapabilities.setCapability("appium:automationName", "UIAutomator2");
-        desiredCapabilities.setCapability("appium:udid", "89T4PF9LM7IRBMP7");
-        desiredCapabilities.setCapability("appium:appActivity", "calculator.innovit.com.calculatrice.MainActivity");
-        desiredCapabilities.setCapability("appium:appPackage", "calculator.innovit.com.calculatrice");
+        desiredCapabilities.setCapability("appium:platformName", configReader.getValue("platformName"));
+        desiredCapabilities.setCapability("appium:deviceName", configReader.getValue("deviceName"));
+        desiredCapabilities.setCapability("appium:platformVersion", configReader.getValue("platformVersion"));
+        desiredCapabilities.setCapability("appium:automationName", configReader.getValue("automationName"));
+        desiredCapabilities.setCapability("appium:udid", configReader.getValue("udid"));
+        desiredCapabilities.setCapability("appium:appActivity", configReader.getValue("appActivity"));
+        desiredCapabilities.setCapability("appium:appPackage", configReader.getValue("appPackage"));
         desiredCapabilities.setCapability("appium:newCommandTimeout", 3600);
         desiredCapabilities.setCapability("appium:connectHardwareKeyboard", true);
 
-        URL remoteUrl = new URL("http://127.0.0.1:4723/wd/hub");
+        //initialize the url
+        URL remoteUrl = new URL(configReader.getValue("url"));
 
+        //initialize the driver
         driver = new AppiumDriver(remoteUrl, desiredCapabilities);
+
+        //adding the implicitlyWait
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         return driver;
