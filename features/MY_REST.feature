@@ -7,6 +7,7 @@ Feature: My rest
     Given User get the DATA
     Then Response Code 200
 
+  @MyREST12345
   @MyRESTpractice
   Scenario: REST Basics
     Given User get the DATA in backend
@@ -15,7 +16,7 @@ Feature: My rest
 #    Given User PATCH the DATA in backend
 
 
-
+  @MyREST12345
   @mylocalapi
 
   Scenario: local api creation

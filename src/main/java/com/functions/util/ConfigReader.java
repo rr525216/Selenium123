@@ -30,7 +30,7 @@ public class ConfigReader {
     }
 
 
-    public static ThreadLocal<HashMap<String, Object>> dynamicConfigs = new ThreadLocal<HashMap<String, Object>>() {
+    public static ThreadLocal<HashMap<String, Object>> dynamicConfigs =  new ThreadLocal<HashMap<String, Object>>() {
         @Override
         protected HashMap<String, Object> initialValue() {
             return new HashMap<String, Object>();
